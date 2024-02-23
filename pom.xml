@@ -103,6 +103,7 @@
                         <recipe>org.openrewrite.java.spring.boot3.SpringBootProperties_3_2</recipe>
                         <recipe>org.openrewrite.java.spring.boot3.SpringBoot3BestPractices</recipe>
                         <recipe>org.openrewrite.staticanalysis.CodeCleanup</recipe>
+                        <recipe>org.openrewrite.staticanalysis.CommonStaticAnalysis</recipe>
                     </activeRecipes>
                     <checkstyleConfigFile>checkstyle.xml</checkstyleConfigFile>
                 </configuration>

@@ -17,13 +17,13 @@ public class CollectionStringConverter implements AttributeConverter<Collection<
     private static final String STRING_SPLITTER = ",";
     @Override
     public String convertToDatabaseColumn(Collection<Role> stringCollection) {
-        return Collections.isEmpty(stringCollection) ? stringCollection.stream().map(Role::name)
-                .collect(Collectors.joining(STRING_SPLITTER)) : "";
+        return Collections.isEmpty(stringCollection) ? "" : stringCollection.stream().map(Role::name)
+                .collect(Collectors.joining(STRING_SPLITTER));
     }
 
     @Override
     public List<Role> convertToEntityAttribute(String string) {
-        return !Objects.isEmpty(string) ? Arrays.stream(string.split(STRING_SPLITTER)).map(Role::valueOf)
-                .collect(Collectors.toList()) : new ArrayList<>();
+        return Objects.isEmpty(string) ? new ArrayList<>() : Arrays.stream(string.split(STRING_SPLITTER)).map(Role::valueOf)
+                .collect(Collectors.toList());
     }
 }
