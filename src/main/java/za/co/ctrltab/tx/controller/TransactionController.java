@@ -15,12 +15,12 @@ import java.security.Principal;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/${app.version:v1}/transactions")
+@RequestMapping("/api/v1/transactions")
 public class TransactionController {
     private final TransactionService transactionService;
 
     @PostMapping
-    public ResponseEntity captureTransaction(@RequestBody final TransactionDto transaction, Principal principal) throws TransactioningException {
+    public ResponseEntity captureTransaction(@RequestBody final TransactionDto transaction, Principal principal) {
         transactionService.captureTransaction(transaction, principal.getName());
         return ResponseEntity.ok().build();
     }

@@ -10,7 +10,6 @@ spring:
     password: admin
 
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: true
     hibernate:
       ddl-auto: validate

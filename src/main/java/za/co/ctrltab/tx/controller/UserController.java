@@ -15,7 +15,7 @@ import za.co.ctrltab.tx.service.exception.TransactioningException;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/api/${app.version}/authentication",
+@RequestMapping(value = "/api/v1/authentication",
         consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE}
 )
 public class UserController {

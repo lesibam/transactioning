@@ -2,6 +2,7 @@ package za.co.ctrltab.tx.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -45,10 +46,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .roles(List.of(Role.USER))
                 .build();
 
-        AppUser save = userRepository.save(user);
-        log.trace("User registered {}", save.getId());
-        var jwt = jwtService.generateToken(mapper.map(user));
-        return AuthenticationResponse.builder().token(jwt).build();
+        try {
+            AppUser save = userRepository.save(user);
+            log.trace("User registered {}", save.getId());
+            var jwt = jwtService.generateToken(mapper.map(user));
+            return AuthenticationResponse.builder().token(jwt).build();
+        } catch (final Exception e) {
+            log.error("Could not register user", e);
+            String message = "Failed to register user";
+            if (e instanceof DataIntegrityViolationException) {
+                message = "User already registered.";
+            }
+            throw new TransactioningException(message, HttpStatus.FORBIDDEN);
+        }
     }
 
     @Override
