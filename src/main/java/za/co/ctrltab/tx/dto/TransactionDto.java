@@ -1,7 +1,6 @@
 package za.co.ctrltab.tx.dto;
 
 import lombok.Builder;
-import za.co.ctrltab.tx.persistence.entity.AppUser;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

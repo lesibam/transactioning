@@ -10,7 +10,8 @@ import za.co.ctrltab.tx.dto.TransactionDto;
 import za.co.ctrltab.tx.service.TransactionService;
 import za.co.ctrltab.tx.service.exception.TransactioningException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -18,12 +19,12 @@ class TransactionServiceTest {
 
     @Autowired
     private TransactionService transactionService;
+
     @Test
     @DisplayName("\uD83D\uDE2D Expecting Failure")
     void testTxService_noUserFound_expect_exception() {
-        var exception = Assertions.assertThrows(TransactioningException.class,
+        var exception = assertThrows(TransactioningException.class,
                 () -> transactionService.captureTransaction(TransactionDto.builder().build(), "username"));
-
         assertEquals("User not registered.", exception.getMessage());
     }
 }

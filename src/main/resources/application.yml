@@ -17,3 +17,6 @@ spring:
       hibernate.connection.CharSet: UTF-8
   flyway:
     enabled: true
+  threads:
+    virtual:
+      enabled: true

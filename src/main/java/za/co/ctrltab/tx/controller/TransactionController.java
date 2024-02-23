@@ -2,13 +2,10 @@ package za.co.ctrltab.tx.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.co.ctrltab.tx.dto.TransactionDto;
-import za.co.ctrltab.tx.persistence.entity.Transaction;
 import za.co.ctrltab.tx.service.TransactionService;
-import za.co.ctrltab.tx.service.exception.TransactioningException;
 
 import java.security.Principal;
 
@@ -26,7 +23,7 @@ public class TransactionController {
     }
 
     @GetMapping(params = { "page", "size" })
-    public ResponseEntity findAllTransaction(@RequestParam(value = "page", required = false) int page, @RequestParam(value = "size", required = false, defaultValue = "50") int size) {
+    public ResponseEntity findAllTransaction(@RequestParam(required = false) int page, @RequestParam(required = false, defaultValue = "50") int size) {
         return ResponseEntity.ofNullable(transactionService.findAllTransactions(page, size));
     }
 }
