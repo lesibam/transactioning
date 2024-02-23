@@ -6,5 +6,6 @@ Create Partitions
 
 
 ## TODO
-- add unit tests
+- add more meaningful unit tests
 - add some validation
+- Handle Exceptions properly
