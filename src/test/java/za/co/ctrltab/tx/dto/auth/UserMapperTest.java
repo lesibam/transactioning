@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class UserMapperTest {
 
 
-    private UserMapper mapper = new UserMapper();
+    private final UserMapper mapper = new UserMapper();
     @Test
     void map() {
         UserDetails mapped = mapper.map(AppUser.builder()

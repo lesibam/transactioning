@@ -31,7 +31,7 @@ public class TransactionServiceImpl implements TransactionService {
             var tx = TransactionMapper.mapEntity(transaction);
             tx.setUser(appUser);
             transactionRepository.save(tx);
-        }, ()-> {
+        }, () -> {
             throw new TransactioningException("User not registered.", HttpStatus.NOT_FOUND);
         });
 

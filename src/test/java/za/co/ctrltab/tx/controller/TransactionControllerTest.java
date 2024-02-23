@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
-@ActiveProfiles({"test","mock"})
+@ActiveProfiles({"test", "mock"})
 class TransactionControllerTest {
 
     @Autowired

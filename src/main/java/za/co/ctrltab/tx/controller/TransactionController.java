@@ -22,7 +22,7 @@ public class TransactionController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping(params = { "page", "size" })
+    @GetMapping(params = {"page", "size"})
     public ResponseEntity findAllTransaction(@RequestParam(required = false) int page, @RequestParam(required = false, defaultValue = "50") int size) {
         return ResponseEntity.ofNullable(transactionService.findAllTransactions(page, size));
     }
